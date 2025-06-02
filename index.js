@@ -1,9 +1,23 @@
-import express from 'express'; // after installation of a module and express we can use express through importing
-const app = express(); // saving express method to make the reading and writing easy
-app.get("/students", (req, res) => {
-    res.send(`Student Profile for ID: ${req.params.id}`); // this is property to get parameters of http query - id
+//import * as http from "node:http";
+// const server = http.createServer((req, res)=>{
+//     if (req.url === '/health-check'){
+//         res.end('<h1>Server is healthy</h1>')
+//     }else {
+//         res.end('<h1>Server is working</h1>')
+//     }
+// })
+//
+// server.listen(3000);
+
+import express from 'express';
+const app = express();
+app.get("/home/:id",(req, res) => {
+    if(req.params.id==='health-check'){
+        res.send("Server is healthy")
+    }
+    else{
+        res.send("Server is running")
+    }
 })
-app.listen(8000, ()=>console.log(`Server started on port 8000`)); //listen is for running the server on browser or postman
-/*
-comments aren't written by chatGPT
-* */
+app.listen(3000);
+
